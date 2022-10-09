@@ -26,7 +26,7 @@ commands:
           name: Revert migrations
           when: on_fail
           command: |
-            SUCCESS=$(curl -k https://kvdb.io/9GE4jRtKznmVKRfvdBABBe/migration_${CIRCLE_WORKFLOW_ID:0:7})
+            SUCCESS=$(curl -k https://kvdb.io/6h9wPbrfcMHffrSixfsDx2/migration_${CIRCLE_WORKFLOW_ID:0:7})
             echo $SUCCESS
             
             if(( $SUCCESS==1 )); 
@@ -183,7 +183,7 @@ jobs:
     steps:
       - checkout
       - add_ssh_keys:
-          fingerprints: ["dc:e4:75:d3:40:eb:eb:4b:83:5c:79:07:e9:85:4e:8f"]
+          fingerprints: ["58:33:41:c7:3f:30:a4:76:24:48:5a:91:f4:2f:ab:c6"]
       - attach_workspace:
           at: ~/
       - run:
@@ -235,10 +235,10 @@ jobs:
           command: |
             if grep -q "has been executed successfully." ~/project/backend/migrations_dump.txt
             then
-              curl --insecure https://kvdb.io/9GE4jRtKznmVKRfvdBABBe/migration_${CIRCLE_WORKFLOW_ID:0:7}  -d '1'
+              curl --insecure https://kvdb.io/6h9wPbrfcMHffrSixfsDx2/migration_${CIRCLE_WORKFLOW_ID:0:7}  -d '1'
               else
               echo "Failure"
-              curl -k -d '0' https://kvdb.io/9GE4jRtKznmVKRfvdBABBe/migration_${CIRCLE_WORKFLOW_ID:0:7}
+              curl -k -d '0' https://kvdb.io/6h9wPbrfcMHffrSixfsDx2/migration_${CIRCLE_WORKFLOW_ID:0:7}
             fi
       - destroy-environment:
           workflow_id: "${CIRCLE_WORKFLOW_ID:0:7}" 
@@ -286,7 +286,7 @@ jobs:
     steps:
       - checkout
       - add_ssh_keys:
-          fingerprints: ["dc:e4:75:d3:40:eb:eb:4b:83:5c:79:07:e9:85:4e:8f"]
+          fingerprints: ["58:33:41:c7:3f:30:a4:76:24:48:5a:91:f4:2f:ab:c6"]
       - attach_workspace:
           at: ~/
       - run:
